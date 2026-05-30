@@ -35,4 +35,14 @@ const updateMe = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, getMe, updateMe };
+//dev purpose
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = { registerUser, getMe, updateMe, getAllUsers };
